@@ -25,12 +25,13 @@
                         <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
                         <dxo-group-panel [visible]="true"></dxo-group-panel>
                         <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
-                        <dxi-column dataField="nombre" caption="Nombre "></dxi-column>
-                        <dxi-column dataField="direcionCorrespondencia" caption="Dirección de Correspondencia">
-                        </dxi-column>
-                        <dxi-column dataField="telefono" caption="Teléfono"></dxi-column>
-                        <dxi-column dataField="correo" caption="Correo electrónico"></dxi-column>
-                        <dxi-column dataField="librosRegistrado" caption="Máximo de libros registrados"></dxi-column>
+
+                        <dxi-column dataField="titulo" caption="Titulo "></dxi-column>
+                        <dxi-column dataField="generon" caption="Genero"></dxi-column>
+                        <dxi-column dataField="anno" caption="Año"></dxi-column>
+                        <dxi-column dataField="numeroPagina" caption="Numero de Paginas"></dxi-column>
+                        <dxi-column dataField="autor" caption="Nombre del autor"></dxi-column>
+                        <dxi-column dataField="editorial" caption="Nombre dela Editorial"></dxi-column>
 
                     </dx-data-grid>
                 </div>
@@ -74,7 +75,7 @@
                 <label for="dateOfBirth"> * Numero Paginas</label>
                 <div class="input-group">
 
-                    <input type="number" class="form-control" formControlName="NumeroPaginas">
+                    <input type="number" class="form-control" formControlName="NumeroPagina">
                 </div>
             </div>
 

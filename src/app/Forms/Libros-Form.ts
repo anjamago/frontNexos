@@ -10,7 +10,7 @@ export const LibroForm = new FormGroup({
     Validators.required,
     Validators.minLength(4),
   ]),
-  NumeroPaginas: new FormControl('', [
+  NumeroPagina: new FormControl('', [
     Validators.required,
   ]),
   IdAutor: new FormControl('', [

@@ -3,7 +3,7 @@ export interface ILibro {
   Titulo: string;
   Generon: string;
   Anno: number;
-  NumberoPagina: number;
+  NumeroPagina: number;
   IdEditorial: number;
   IdAutor: number;
 }
