@@ -1,0 +1,111 @@
+<!---table lista clientes-->
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-md-flex align-items-center">
+                    <div>
+                        <h4 class="card-title font-16 text-uppercase">Libors</h4>
+                    </div>
+                </div>
+                <div class="d-md-flex align-items-center">
+                    <div class="d-grid gap-2 d-md-flex card-title">
+                        <button class="btn btn-lg btn-outline-primary" (click)="openModal(modalcreate)">Nuevo
+                            Libros</button>
+                    </div>
+                </div>
+                <!-- title -->
+                <div class="table-responsive">
+                    <dx-data-grid id="gridContainer" [dataSource]="tableData" [remoteOperations]="false"
+                        [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showBorders]="true">
+
+                        <dxo-paging [pageSize]="10"></dxo-paging>
+                        <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"></dxo-pager>
+                        <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+                        <dxo-group-panel [visible]="true"></dxo-group-panel>
+                        <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+                        <dxi-column dataField="nombre" caption="Nombre "></dxi-column>
+                        <dxi-column dataField="direcionCorrespondencia" caption="Dirección de Correspondencia">
+                        </dxi-column>
+                        <dxi-column dataField="telefono" caption="Teléfono"></dxi-column>
+                        <dxi-column dataField="correo" caption="Correo electrónico"></dxi-column>
+                        <dxi-column dataField="librosRegistrado" caption="Máximo de libros registrados"></dxi-column>
+
+                    </dx-data-grid>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #modalcreate let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Registrar Libro</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="libroForm">
+            <div class="form-group">
+                <label for="dateOfBirth"> * Titulo </label>
+                <div class="input-group">
+
+                    <input type="text" class="form-control" formControlName="Titulo">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="dateOfBirth"> * Año</label>
+                <div class="input-group">
+
+                    <input type="number" class="form-control" formControlName="Anno">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="dateOfBirth"> * Genero</label>
+                <div class="input-group">
+
+                    <input type="text" class="form-control" formControlName="Generon">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="dateOfBirth"> * Numero Paginas</label>
+                <div class="input-group">
+
+                    <input type="number" class="form-control" formControlName="NumeroPaginas">
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="dateOfBirth"> * Selecione un Autor</label>
+                <div class="input-group">
+                    <select  id="autor" class="form-control" formControlName="IdAutor">
+                        <option value="0" selected></option>
+                        <option *ngFor="let item of autorList" [ngValue]="item" >{{ item.nombreCompleto }}</option>
+                        
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="dateOfBirth"> * Selecione una Editorial </label>
+                <div class="input-group">
+                    <select  id="autor" class="form-control" formControlName="IdEditorial">
+                        <option value="0" selected></option>
+                        <option *ngFor="let item of editorialList" [ngValue]="item">{{ item.nombre }}</option>
+                        
+                    </select>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="save()">Save</button>
+    </div>
+</ng-template>

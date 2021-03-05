@@ -1,0 +1,98 @@
+<!---table lista clientes-->
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-md-flex align-items-center">
+                    <div>
+                        <h4 class="card-title font-16 text-uppercase">Editoriales</h4>
+                    </div>
+
+                </div>
+                <div class="d-md-flex align-items-center">
+
+                    <div class="d-grid gap-2 d-md-flex card-title">
+                        <button class="btn btn-lg btn-outline-primary" (click)="openModal(modalcreate)">Nueva Editorial</button>
+                    </div>
+                  
+                </div>
+                <!-- title -->
+
+                <div class="table-responsive">
+                    <dx-data-grid id="gridContainer" [dataSource]="tableData" [remoteOperations]="false" [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showBorders]="true">
+
+                        <dxo-paging [pageSize]="10"></dxo-paging>
+                        <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"></dxo-pager>
+                        <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+                        <dxo-group-panel [visible]="true"></dxo-group-panel>
+                        <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+                        <dxi-column dataField="nombre" caption="Nombre "></dxi-column>
+                        <dxi-column dataField="direcionCorrespondencia" caption="Dirección de Correspondencia"></dxi-column>
+                        <dxi-column dataField="telefono" caption="Teléfono"></dxi-column>
+                        <dxi-column dataField="correo" caption="Correo electrónico"></dxi-column>
+                        <dxi-column dataField="librosRegistrado" caption="Máximo de libros registrados"></dxi-column>
+
+                    </dx-data-grid>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<ng-template #modalcreate let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Registrar Editorial</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="authorForm">
+            <div class="form-group">
+                <label for="dateOfBirth"> * Nombre </label>
+                <div class="input-group">
+                    <!--  <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker"> -->
+                    <input type="text" class="form-control" formControlName="Nombre">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="dateOfBirth"> * Direccion de Correspondencia</label>
+                <div class="input-group">
+                    <!--  <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker"> -->
+                    <input type="text" class="form-control" formControlName="DirecionCorrespondencia">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="dateOfBirth"> * Telefono</label>
+                <div class="input-group">
+                    <!--  <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker"> -->
+                    <input type="number" class="form-control" formControlName="Telefono">
+                </div>
+            </div>
+          
+            <div class="form-group">
+                <label for="dateOfBirth"> * Correo elecotronico</label>
+                <div class="input-group">
+                    <!--  <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker"> -->
+                    <input type="email" class="form-control" formControlName="Correo">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="dateOfBirth"> * Máximo de libros registrados</label>
+                <div class="input-group">
+                    <!--  <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker"> -->
+                    <input type="number" class="form-control" formControlName="LibrosRegistrado">
+                </div>
+            </div>
+         
+           
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="save()">Save</button>
+    </div>
+</ng-template>

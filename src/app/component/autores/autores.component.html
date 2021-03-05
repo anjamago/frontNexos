@@ -1,0 +1,96 @@
+<!---table lista clientes-->
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-md-flex align-items-center">
+                    <div>
+                        <h4 class="card-title font-16 text-uppercase">Autores</h4>
+                    </div>
+
+                </div>
+                <div class="d-md-flex align-items-center">
+
+                    <div class="d-grid gap-2 d-md-flex card-title">
+                        <button class="btn btn-lg btn-outline-primary" (click)="openModal(modalcreate)">Nuevo Autor</button>
+                    </div>
+                  
+
+                </div>
+                <!-- title -->
+
+                <div class="table-responsive">
+                    <dx-data-grid id="gridContainer" [dataSource]="tableData" [remoteOperations]="false" [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showBorders]="true">
+
+                        <dxo-paging [pageSize]="10"></dxo-paging>
+                        <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"></dxo-pager>
+                        <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+                        <dxo-group-panel [visible]="true"></dxo-group-panel>
+                        <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+                        <dxi-column dataField="nombreCompleto" caption="Nombre Completo"></dxi-column>
+                        <dxi-column dataField="correo" caption="Correo"></dxi-column>
+                        <dxi-column dataField="ciudad" caption="Ciudada de Procedencia"></dxi-column>
+                        <dxi-column dataField="fechaNacimiento" caption="Fecha de Nacimiento" dataType="date" format="yyyy-MM-dd"></dxi-column>
+
+                    </dx-data-grid>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<ng-template #modalcreate let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Registrar nuevo autor</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="authorForm">
+            <div class="form-group">
+                <label for="dateOfBirth"> * Nombre Completo</label>
+                <div class="input-group">
+                    <!--  <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker"> -->
+                    <input type="text" class="form-control" formControlName="NombreCompleto">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="dateOfBirth"> * Ciudad de Procedencia</label>
+                <div class="input-group">
+                    <!--  <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker"> -->
+                    <input type="text" class="form-control" formControlName="Ciudad">
+                </div>
+            </div>
+          
+            <div class="form-group">
+                <label for="dateOfBirth"> * Correo elecotronico</label>
+                <div class="input-group">
+                    <!--  <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker"> -->
+                    <input type="email" class="form-control" formControlName="Correo">
+                </div>
+            </div>
+         
+            <div class="form-group">
+                <label for="dateOfBirth"> * Fecha de Nacimiento</label>
+                <div class="input-group">
+                    <!--  <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker"> -->
+
+                    <input class="form-control" placeholder="yyyy-mm-dd" name="dp" formControlName="FechaNacimiento" ngbDatepicker #d="ngbDatepicker">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button">
+                            <span class="mdi mdi-calendar"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="save()">Save</button>
+    </div>
+</ng-template>
